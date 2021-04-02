@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "awesome-phonenumber": "^2.48.0",
     "coveralls": "^3.0.2",
     "file-saver": "^2.0.1",
-    "msexcel-builder": "0.0.2",
-    "node-excel-export": "^1.4.4",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",

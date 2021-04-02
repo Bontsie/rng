@@ -8,8 +8,6 @@ import Sorter from "./Sorter";
 import GeneratedNumbers from "./GeneratedNumbers";
 import Error from "./Error";
 import ExportButton from './ExportButton'
-import PhoneNumber from 'awesome-phonenumber'
-import excelbuilder from 'msexcel-builder'
 
 class App extends Component {
   state = {
@@ -38,27 +36,15 @@ class App extends Component {
   generateNumberHandler = event => {
     event.preventDefault();
     const { limit } = this.state;
-    if (limit > 50000) return this.setState({
+    if (limit > 10000) return this.setState({
       error: true,
       message: "The number entered exceeds the accepted limit"
     });
     let phoneNumbers = [];
     let phoneNumber = 0;
-    var tmpNum, tmpMul, setMin=3, setMax=9,min,max; 
     while (phoneNumber < limit) {
-      min = Math.ceil (setMin);
-      max = Math.floor(setMax);
-      tmpMul = Math.random () * (max - min) + min;
-      tmpNum = '+861' + Math.floor(Math.random() * 900000000 + (1000000000 * tmpMul));
-      //tmpNum = '+861' + Math.floor(Math.random() * 900000000 + 9000000000);
-      if (PhoneNumber(tmpNum).isMobile() && PhoneNumber(tmpNum).isValid()){
-        console.log ("is valid")
-        phoneNumbers.push(tmpNum);
-        phoneNumber++;
-      }
-      else {
-        console.log("rejected " + tmpNum);
-      }
+      phoneNumbers.push('0' + Math.floor(Math.random() * 900000000 + 100000000));
+      phoneNumber++;
     }
     return this.setState({
       phoneNumbers
@@ -70,17 +56,11 @@ class App extends Component {
 
   exportPhoneNumbers = () => {
     const { phoneNumbers } = this.state;
-    /*if (phoneNumbers.length > 0) {
+    if (phoneNumbers.length > 0) {
       saveAs(new Blob(phoneNumbers, { 
         type: "text/csv;charset=utf-8" 
       }), 'phone_numbers.csv')
-    }*/
-    var workbook = excelbuilder.createWorkbook ('./','report.xlsx');
-    var sheet1 = workbook.createSheet ('sheet1',10,10);
-    var i=1;
-    phoneNumbers.forEach(num => {
-      sheet1.set(i,1,num);
-    });
+    }
   };
   
   getUserInput = async event => {
