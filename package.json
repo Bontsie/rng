@@ -1,0 +1,43 @@
+{
+  "name": "png",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "awesome-phonenumber": "^2.48.0",
+    "coveralls": "^3.0.2",
+    "file-saver": "^2.0.1",
+    "msexcel-builder": "0.0.2",
+    "node-excel-export": "^1.4.4",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-scripts": "2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test -u --coverage && cat ./coverage/lcov.info | coveralls",
+    "eject": "react-scripts eject",
+    "coverage": "react-scripts test --env=jsdom --coverage",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js"
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1"
+  }
+}
